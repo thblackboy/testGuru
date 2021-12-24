@@ -15,14 +15,14 @@ categories = Category.create!([
                                 { title: 'IT' }
                               ])
 tests = Test.create!([
-                       { title: 'Algebra', level: 0, category_id: categories[0].id, user_id: users[0].id },
-                       { title: 'Algebra', level: 1, category_id: categories[0].id, user_id: users[0].id },
-                       { title: 'Geometry', level: 0, category_id: categories[0].id, user_id: users[0].id },
-                       { title: 'Geometry', level: 1, category_id: categories[0].id, user_id: users[0].id },
-                       { title: 'Ruby', level: 0, category_id: categories[1].id, user_id: users[1].id },
-                       { title: 'Ruby', level: 1, category_id: categories[1].id, user_id: users[1].id },
-                       { title: 'HTML', level: 0, category_id: categories[1].id, user_id: users[1].id },
-                       { title: 'HTML', level: 1, category_id: categories[1].id, user_id: users[1].id }
+                       { title: 'Algebra', level: 0, category_id: categories[0].id, author_id: users[0].id },
+                       { title: 'Algebra', level: 1, category_id: categories[0].id, author_id: users[0].id },
+                       { title: 'Geometry', level: 0, category_id: categories[0].id, author_id: users[0].id },
+                       { title: 'Geometry', level: 1, category_id: categories[0].id, author_id: users[0].id },
+                       { title: 'Ruby', level: 0, category_id: categories[1].id, author_id: users[1].id },
+                       { title: 'Ruby', level: 1, category_id: categories[1].id, author_id: users[1].id },
+                       { title: 'HTML', level: 0, category_id: categories[1].id, author_id: users[1].id },
+                       { title: 'HTML', level: 1, category_id: categories[1].id, author_id: users[1].id }
                      ])
 questions = Question.create!([
                                { body: '2+2', test_id: tests[0].id },
