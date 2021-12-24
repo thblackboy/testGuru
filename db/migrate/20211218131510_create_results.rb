@@ -3,7 +3,7 @@ class CreateResults < ActiveRecord::Migration[6.1]
     create_table :results do |t|
       t.references :user, null: false, foreign_key: true
       t.references :test, null: false, foreign_key: true
-      t.integer :points
+      t.integer :points, default: 0, null: false
 
       t.timestamps
     end
