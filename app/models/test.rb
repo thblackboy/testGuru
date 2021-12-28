@@ -11,11 +11,14 @@ class Test < ApplicationRecord
 
   scope :easy, -> { where(level: 0..1) }
   scope :middle, -> { where(level: 2..4) }
-  scope :hard, -> { where('tests.level >= 5') }
+  scope :hard, -> { where(level: 5..) }
   scope :tests_by_category_name, lambda { |category_name|
                                    joins(:category)
                                      .where(categories: { title: category_name })
                                      .order(title: :desc)
-                                     .pluck(:title)
                                  }
+
+  def self.tests_names_by_category_name(category_name)
+    tests_by_category_name(category_name).pluck(:title)
+  end
 end
