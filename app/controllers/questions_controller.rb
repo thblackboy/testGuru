@@ -5,23 +5,22 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
-    # render inline: 'Test: <%= @test.title %>. Questions: <%= @test.questions.ids %>'
-    render inline: '<%= @test.questions.inspect %>'
+    render plain: @test.questions.inspect
   end
 
   def show
     render plain: @question.inspect
-    # render inline: "Информация о вопросе: Вопрос: <%= @question.body %>\n
-    # Варианты ответов: <%= @question.answers.pluck(:body) %>"
   end
 
-  def new
-  
-  end
+  def new; end
 
   def create
-    @test.questions.create!(question_params)
-    render plain: 'Вопрос успешно создан'
+    @question = @test.questions.build(question_params)
+    if @question.save
+      redirect_to @question
+    else
+      render :new
+    end
   end
 
   def destroy
