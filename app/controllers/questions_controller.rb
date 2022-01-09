@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @test.questions.build(question_params)
     if @question.save
-      render plain: @question.inspect
+      redirect_to question_path(@question)
     else
       render :new
     end
