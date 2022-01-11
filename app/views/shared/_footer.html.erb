@@ -1,7 +1,7 @@
 <footer>
   <%= year%>
   <strong>Alfonso Alexandr</strong>
-  <a href=<%= github_url('thblackboy', 'testguru') %>>Проект TestGuru - Площадка тестов</a>
+  <%= github_url(author: 'thblackboy', repo: 'testguru', title: 'Проект TestGuru - Площадка тестов') %>
   <br>
-  <a href="https://thinknetica.com">Учебный проект в онлайн-школе Thinknetica</a>
+  <%= link_to 'Учебный проект в онлайн-школе Thinknetica', 'https://thinknetica.com' %>
 </footer>

@@ -1,9 +1,9 @@
 module QuestionsHelper
-  def question_header(test)
-    if action_name == 'new'
-      "Create New #{test.title} question"
-    elsif action_name == 'edit'
-      "Edit #{test.title} question"
+  def question_header(question)
+    if question.new_record?
+      "Create New #{question.test.title} question"
+    else
+      "Edit #{question.test.title} question"
     end
   end
 end
