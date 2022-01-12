@@ -1,2 +1,8 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<h1>About <%= @question.test.title%> question</h1>
+<p>Body:
+  <%= @question.body%>
+</p>
+<p>By test:
+  <%= @question.test.title%>
+</p>
+<%= link_to "Back to test", test_path(@question.test) %>
