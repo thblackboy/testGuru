@@ -1,10 +1,10 @@
 <h1>Completed</h1>
-<%if @test_passage.result_testing_in_percentages >= 85%>
+<%if @test_passage.successful?%>
   <p style="color:green;">
-    Congratulation! You have passed test. Your result: <b><%= @test_passage.result_testing_in_percentages %>%</b>
+    Congratulation! You have passed test. Your result: <b><%= @test_passage.success_ratio %>%</b>
   </p>
 <% else %>
   <p style="color:red">
-    Sorry! You have fallen test. Your result: <b><%= @test_passage.result_testing_in_percentages %>%</b>
+    Sorry! You have fallen test. Your result: <b><%= @test_passage.success_ratio %>%</b>
   </p>
 <% end %>
