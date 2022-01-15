@@ -4,13 +4,15 @@
 </p>
 <%if @tests.present? %>
   <table>
-    <tr>
+    <thead>
       <td>Title</td>
       <td>Level</td>
       <td>Questions</td>
-      <td colspan="3">Action</td>
-    </tr>
+      <td colspan="4">Actions</td>
+    </thead>
+    <tbody>
     <%= render @tests %>
+    </tbody>
   </table>
   <% else %>
     <p>No tests</p>
