@@ -1,6 +1,8 @@
 class TestsController < ApplicationController
-  before_action :find_user, only: %i[create start]
+
+  before_action :find_user, only: %i[create start show]
   before_action :find_test, only: %i[show edit update destroy start]
+  before_action :check_author, only: %i[update edit destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
@@ -45,8 +47,12 @@ class TestsController < ApplicationController
 
   private
 
+  def check_author
+    redirect_to tests_path, alert: "You don't have access" unless @test.author?(current_user)
+  end
+
   def find_user
-    @user = User.first
+    @user = User.find(current_user.id)
   end
 
   def find_test

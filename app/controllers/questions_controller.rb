@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: %i[create new]
+  before_action :find_test
   before_action :find_question, only: %i[show destroy edit update]
+  before_action :check_author
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -50,5 +51,9 @@ class QuestionsController < ApplicationController
 
   def rescue_with_question_not_found
     render plain: 'Вопрос не найден'
+  end
+
+  def check_author
+    redirect_to tests_path, alert: "You don't have access" unless @test.author?(current_user)
   end
 end

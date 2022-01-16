@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get :logout, to: 'sessions#destroy'
+  get :login, to: 'sessions#new'
+  get :signup, to: 'users#new'
+
+  resources :users, only: :create
+  resources :sessions, only: :create
+
   resources :tests do
     resources :questions, shallow: true, except: :index do
       resources :answers, shallow: true, except: :index
@@ -13,4 +20,6 @@ Rails.application.routes.draw do
       get :result
     end
   end
+
+  root to: 'tests#index'
 end
