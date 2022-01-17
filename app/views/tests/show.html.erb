@@ -11,7 +11,7 @@
 <p>Author:
   <%= @test.author.username%>
 </p>
-<h3><%= pluralize(@test.questions.count, 'questions') %>:</h3>
+<p><%= pluralize(@test.questions.count, 'questions') %></p>
 <p>
   <%= link_to "New question", new_test_question_path(@test) %>
   <table>

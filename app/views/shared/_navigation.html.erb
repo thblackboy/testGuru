@@ -1,1 +1,17 @@
-<%= link_to "All tests", tests_path, rel: 'nofollow' %>
+<div class="nav">
+  <%= link_to "TestGuru", root_path %>
+  <% if logged_in? %>
+    <%= link_to "All tests", tests_path, rel: 'nofollow' %> 
+    <div class="nav user">
+      Welcome, <b><%=current_user.username %></b>
+      <%= link_to "Logout",
+                logout_path,
+                rel: 'nofollow',
+                method: :delete,
+                data: { confirm: 'Are you sure?'} %>
+    </div>
+  <% else %>
+    <%= link_to "SignUp", signup_path, rel: 'nofollow' %> |
+    <%= link_to "Login", login_path, rel: 'nofollow' %> 
+  <% end %>  
+</div>
