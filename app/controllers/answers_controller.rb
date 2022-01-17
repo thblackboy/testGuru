@@ -1,7 +1,6 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: %i[show edit update destroy]
-  before_action :find_question
-  before_action :check_author
+  before_action :find_question, only: %i[create new]
 
   # GET /answers/1
   def show; end
@@ -53,9 +52,5 @@ class AnswersController < ApplicationController
 
   def find_question
     @question = Question.find(params[:question_id])
-  end
-
-  def check_author
-    redirect_to tests_path, alert: "You don't have access" unless @question.test.author?(current_user)
   end
 end

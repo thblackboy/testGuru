@@ -12,7 +12,6 @@
   <%= @test.author.username%>
 </p>
 <p><%= pluralize(@test.questions.count, 'questions') %></p>
-<%if @test.author?(current_user) %>
 <p>
   <%= link_to "New question", new_test_question_path(@test) %>
   <table>
@@ -25,5 +24,4 @@
     </tbody>
   </table>
 </p>
-<% end %>
 <%= link_to "Back to tests", tests_path %>

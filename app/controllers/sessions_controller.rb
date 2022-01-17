@@ -13,11 +13,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      if cookies[:path].present?
-        redirect_to cookies[:path]
-      else
-        redirect_to tests_path
-      end
+      redirect_to cookies.delete(:redirect_after_login_path) || tests_path
     else
       flash.now[:alert] = 'Incorrect email or password'
       render :new

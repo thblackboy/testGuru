@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :tests_by_authors, class_name: 'Test', foreign_key: 'author_id', dependent: :destroy
 
-  validates_format_of :email, with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
   validates :username, presence: true, uniqueness: true
   validates :email, uniqueness: true
 

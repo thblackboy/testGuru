@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get :logout, to: 'sessions#destroy'
+  delete :logout, to: 'sessions#destroy'
   get :login, to: 'sessions#new'
   get :signup, to: 'users#new'
 

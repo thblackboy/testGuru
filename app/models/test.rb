@@ -21,8 +21,4 @@ class Test < ApplicationRecord
   def self.tests_names_by_category_name(category_name)
     tests_by_category_name(category_name).pluck(:title)
   end
-
-  def author?(current_user)
-    author.id == current_user.id
-  end
 end

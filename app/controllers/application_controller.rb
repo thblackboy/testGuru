@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     unless current_user
-      cookies[:path] = request.path
+      cookies[:redirect_after_login_path] = request.path
       redirect_to login_path, alert: 'Firstly you have to login'
     end
   end
