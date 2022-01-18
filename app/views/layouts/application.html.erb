@@ -12,9 +12,7 @@
 
   <body>
     <%= render 'shared/navigation' %>
-    <% flash.each do |key, message| %>
-      <%= content_tag :p, message, class: "flash #{key}" %>
-    <% end %>
+    <%= render 'shared/flash' %>    
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>

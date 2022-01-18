@@ -13,9 +13,8 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :tests_by_authors, class_name: 'Test', foreign_key: 'author_id', dependent: :destroy
 
-  # validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
-  # validates :username, presence: true, uniqueness: true
-  # validates :email, uniqueness: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   def show_tests_by_level(level)
     tests.where(level: level)
