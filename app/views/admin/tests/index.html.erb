@@ -1,0 +1,19 @@
+<h1> Test List</h1>
+<p>
+  <%= link_to "New test", new_admin_test_path %>
+</p>
+<%if @tests.present? %>
+  <table>
+    <thead>
+      <td>Title</td>
+      <td>Level</td>
+      <td>Questions</td>
+      <td colspan="4">Actions</td>
+    </thead>
+    <tbody>
+    <%= render @tests %>
+    </tbody>
+  </table>
+  <% else %>
+    <p>No tests</p>
+<% end %>

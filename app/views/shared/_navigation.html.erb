@@ -1,17 +1,17 @@
 <div class="nav">
   <%= link_to "TestGuru", root_path %>
-  <% if logged_in? %>
+  <% if user_signed_in? %>
     <%= link_to "All tests", tests_path, rel: 'nofollow' %> 
     <div class="nav user">
-      Welcome, <b><%=current_user.username %></b>
+      Welcome, <b><%=current_user.email %></b>
       <%= link_to "Logout",
-                logout_path,
+                destroy_user_session_path,
                 rel: 'nofollow',
                 method: :delete,
                 data: { confirm: 'Are you sure?'} %>
     </div>
   <% else %>
-    <%= link_to "SignUp", signup_path, rel: 'nofollow' %> |
-    <%= link_to "Login", login_path, rel: 'nofollow' %> 
+    <%= link_to "SignUp", new_user_registration_path, rel: 'nofollow' %> |
+    <%= link_to "Login", new_user_session_path, rel: 'nofollow' %> 
   <% end %>  
 </div>
