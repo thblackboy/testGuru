@@ -1,0 +1,27 @@
+<h1>About test</h1>
+<p>Title:
+  <%= @test.title%>
+</p>
+<p>Level:
+  <%= @test.level%>
+</p>
+<p>Category:
+  <%= @test.category.title%>
+</p>
+<p>Author:
+  <%= @test.author.email%>
+</p>
+<p><%= pluralize(@test.questions.count, 'questions') %></p>
+<p>
+  <%= link_to "New question", new_admin_test_question_path(@test) %>
+  <table>
+    <thead>
+      <td>Question</td>
+      <td colspan="3">Actions</td>
+    </thead>
+    <tbody>
+    <%= render @test.questions%>
+    </tbody>
+  </table>
+</p>
+<%= link_to "Back to tests", admin_tests_path %>
