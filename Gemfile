@@ -25,6 +25,12 @@ gem 'jbuilder', '~> 2.7'
 #auth
 gem 'devise', '~> 4.0'
 
+gem 'octokit', '~> 4.0'
+
+gem 'faraday'
+
+gem 'rails-i18n'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
