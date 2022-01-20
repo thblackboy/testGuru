@@ -12,7 +12,8 @@
 
   <body>
     <%= render 'admin/navigation' %>
-    <%= render 'shared/flash' %>
+    <%= flash_message('alert') %> 
+    <%= flash_message('notice') %> 
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>

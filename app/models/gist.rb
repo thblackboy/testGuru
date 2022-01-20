@@ -5,5 +5,4 @@ class Gist < ApplicationRecord
   validates :question, presence: true
   validates :gist_url, presence: true
   validates :owner, presence: true
-
 end
