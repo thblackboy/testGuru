@@ -7,6 +7,10 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import 'bootstrap'
+
+require('utilities/sorting.js')
+require('utilities/password_match.js')
 
 Rails.start()
 Turbolinks.start()
