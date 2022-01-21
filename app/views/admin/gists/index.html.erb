@@ -1,0 +1,15 @@
+<h1> Gist list</h1>
+<%if @gists.present? %>
+  <table>
+    <thead>
+      <td>Question</td>
+      <td>Gist URL</td>
+      <td>Owner</td>
+    </thead>
+    <tbody>
+    <%= render @gists %>
+    </tbody>
+  </table>
+  <% else %>
+    <p>No gists</p>
+<% end %>

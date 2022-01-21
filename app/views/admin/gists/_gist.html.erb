@@ -1,0 +1,6 @@
+<tr>
+<td><%= link_to "#{ gist.question.body[..24] }", admin_question_path(gist.question), rel: "nofollow" %></td>
+<td><%= link_to "Click" , gist.gist_url, rel: "nofollow", target: "_blank" %></td>
+<td><%= gist.owner.email %></td>
+</tr>
+

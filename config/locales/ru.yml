@@ -31,3 +31,10 @@
 
 ru:
   hello: "Привет мир"
+  gist_description: "Вопрос теста: %{test_title} на площадке TestGuru"
+
+  gists:
+    create:
+      success_html: "Gist <b>сохранен</b>. URL: %{gist_url}"
+      gist_url_text: "Ссылка на Gist"
+      failure: "Во время сохранения gist произошла ошибка"
