@@ -24,11 +24,14 @@ gem 'jbuilder', '~> 2.7'
 
 #auth
 gem 'devise', '~> 4.0'
-
+#git api client
 gem 'octokit', '~> 4.0'
-
+#localization
 gem 'rails-i18n'
 
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.0.0'
+gem 'octicons_helper'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

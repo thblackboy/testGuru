@@ -3,9 +3,13 @@
   <%= link_to "New test", new_admin_test_path %>
 </p>
 <%if @tests.present? %>
-  <table>
+  <table class="table">
     <thead>
-      <td>Title</td>
+      <td class="sort-by-title pointer">
+      Title
+      <%= octicon 'arrow-up', class: 'text-success hide'%>
+      <%= octicon 'arrow-down', class: 'text-success hide'%>
+      </td>
       <td>Level</td>
       <td>Questions</td>
       <td colspan="3">Actions</td>
