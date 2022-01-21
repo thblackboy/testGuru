@@ -1,29 +1,26 @@
 document.addEventListener('turbolinks:load', function () {
-  var password = document.getElementById('user_password')
-  var passwordConfirmation = document.getElementById('user_password_confirmation')
-  if (password) { password.addEventListener('input', passwordMatch) }
-  if (passwordConfirmation) { passwordConfirmation.addEventListener('input', passwordMatch) }
+  const passFields = document.querySelector('.password-fields')
+  if (passFields) { passFields.addEventListener('input', passwordMatch) }
 })
-
+let passwords
 function passwordMatch() {
-  var password = document.getElementById('user_password')
-  var passwordConfirmation = document.getElementById('user_password_confirmation')
-  if (password.value != "" && passwordConfirmation.value != "") {
-      if(password.value != passwordConfirmation.value ) {
-        password.classList.remove('success')
-        passwordConfirmation.classList.remove('success')
-        password.classList.add('fail')
-        passwordConfirmation.classList.add('fail')
+  if (passwords == null) { passwords = this.querySelectorAll('input') }
+  if (passwords[0].value != "" && passwords[1].value != "") {
+      if(passwords[0].value != passwords[1].value ) {
+        passwords[0].classList.remove('success')
+        passwords[1].classList.remove('success')
+        passwords[0].classList.add('fail')
+        passwords[1].classList.add('fail')
       } else {
-        password.classList.remove('fail')
-        passwordConfirmation.classList.remove('fail')
-        password.classList.add('success')
-        passwordConfirmation.classList.add('success')
+        passwords[0].classList.remove('fail')
+        passwords[1].classList.remove('fail')
+        passwords[0].classList.add('success')
+        passwords[1].classList.add('success')
       }
   } else {
-    password.classList.remove('fail')
-    passwordConfirmation.classList.remove('fail')
-    password.classList.remove('success')
-    passwordConfirmation.classList.remove('success')
+    passwords[0].classList.remove('fail')
+    passwords[1].classList.remove('fail')
+    passwords[0].classList.remove('success')
+    passwords[1].classList.remove('success')
   }
 }
