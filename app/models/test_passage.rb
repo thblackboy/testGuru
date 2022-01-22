@@ -26,6 +26,10 @@ class TestPassage < ApplicationRecord
     passed_questions_count + 1
   end
 
+  def passed_questions_count
+    test.questions.order(:id).where('id < ?', current_question.id).count
+  end
+
   private
 
   def correct__answer?(answer_ids)
@@ -42,10 +46,6 @@ class TestPassage < ApplicationRecord
     else
       test.questions.order(:id).where('id > ?', current_question.id).first
     end
-  end
-
-  def passed_questions_count
-    test.questions.order(:id).where('id < ?', current_question.id).count
   end
 
   def before_validation_set_current_question

@@ -33,6 +33,11 @@ ru:
   hello: "Привет мир"
   gist_description: "Вопрос теста: %{test_title} на площадке TestGuru"
 
+  admin:
+    tests:
+      form_inline:
+        submit: "OK"
+
   gists:
     create:
       success_html: "Gist <b>сохранен</b>. URL: %{gist_url}"

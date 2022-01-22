@@ -33,6 +33,11 @@ en:
   hello: "Hello world"
   gist_description: "A question about %{test_title} from TestGuru"
 
+  admin:
+    tests:
+      form_inline:
+        submit: "OK"
+
   gists:
     create:
       success_html: "Gist <b>saved</b>. URL: %{gist_url}"
