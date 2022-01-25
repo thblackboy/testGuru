@@ -1,5 +1,8 @@
 <h1> Test List</h1>
 <p>
+<%= render 'shared/errors', resource: @test %>
+</p>
+<p>
   <%= link_to "New test", new_admin_test_path %>
 </p>
 <%if @tests.present? %>

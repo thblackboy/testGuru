@@ -12,3 +12,12 @@
   <p> <%= link_to "Gist Question", test_passage_gist_path(@test_passage), method: :post %> </p>
   <p><%= form.submit 'Next'%></p>
 <% end %>
+<div class="passage-progress-bar">
+  <%= content_tag :div,
+                  class: 'passage-progress',
+                  data: {passed_questions_count: @test_passage.passed_questions_count,
+                        questions_count: @test_passage.test.questions.count
+                        } do %>
+  <% end %>
+
+</div>
