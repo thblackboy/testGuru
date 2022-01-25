@@ -30,6 +30,14 @@ class TestPassage < ApplicationRecord
     test.questions.order(:id).where('id < ?', current_question.id).count
   end
 
+  def end_time_to_ms
+    end_time.to_f * 1000
+  end
+
+  def end_time
+    created_at + test.time_execution.minutes
+  end
+
   private
 
   def correct__answer?(answer_ids)
