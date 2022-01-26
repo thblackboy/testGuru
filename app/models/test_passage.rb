@@ -6,7 +6,7 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_current_question
 
   def time_over?
-    end_time < Time.current
+    end_time.present? && end_time < Time.current
   end
 
   def accept!(answer_ids)
@@ -44,7 +44,7 @@ class TestPassage < ApplicationRecord
   end
 
   def end_time
-    created_at + test.time_execution.minutes
+    created_at + test.time_execution.minutes if test.time_execution != 0
   end
 
   private
