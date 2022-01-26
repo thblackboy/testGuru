@@ -5,8 +5,16 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_current_question
 
+  def time_over?
+    end_time < Time.current
+  end
+
   def accept!(answer_ids)
-    self.correct_questions += 1 if correct__answer?(answer_ids)
+    if time_over?
+      self.current_question = nil
+    else
+      self.correct_questions += 1 if correct__answer?(answer_ids)
+    end
     save!
   end
 
@@ -52,7 +60,7 @@ class TestPassage < ApplicationRecord
     if new_record?
       self.current_question = test.questions.first
     else
-      test.questions.order(:id).where('id > ?', current_question.id).first
+      test.questions.order(:id).where('id > ?', current_question.id).first if current_question.present
     end
   end
 
