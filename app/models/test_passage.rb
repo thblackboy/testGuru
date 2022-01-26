@@ -60,7 +60,7 @@ class TestPassage < ApplicationRecord
     if new_record?
       self.current_question = test.questions.first
     else
-      test.questions.order(:id).where('id > ?', current_question.id).first if current_question.present
+      test.questions.order(:id).where('id > ?', current_question.id).first if current_question.present?
     end
   end
 
