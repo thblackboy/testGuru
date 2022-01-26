@@ -7,9 +7,9 @@ class BadgeGiveService
   def call
     Badge.all.each do |badge|
       if badge.condition_param.present?
-        @user.badges.push(badge) if eval "check_#{badge.condition_type}(#{badge.condition_param})?"
-      elsif eval "check_#{badge.condition_type}?"
-        @user.badges.push(badge)
+        @user.badges.push(badge) if eval("check_#{badge.condition_type}?('#{badge.condition_param}')")
+      else
+        @user.badges.push(badge) if eval("check_#{badge.condition_type}?")
       end
     end
   end
