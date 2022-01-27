@@ -12,8 +12,8 @@ class TestPassage < ApplicationRecord
   def accept!(answer_ids)
     if time_over?
       self.current_question = nil
-    else
-      self.correct_questions += 1 if correct__answer?(answer_ids)
+    elsif correct__answer?(answer_ids)
+      self.correct_questions += 1
     end
     save!
   end
@@ -23,7 +23,11 @@ class TestPassage < ApplicationRecord
   end
 
   def successful?
-    success_ratio >= 85
+    if success.nil?
+      self.success = success_ratio >= 85
+      save!
+    end
+    success
   end
 
   def success_ratio
@@ -59,8 +63,8 @@ class TestPassage < ApplicationRecord
   def next_question
     if new_record?
       self.current_question = test.questions.first
-    else
-      test.questions.order(:id).where('id > ?', current_question.id).first if current_question.present?
+    elsif current_question.present?
+      test.questions.order(:id).where('id > ?', current_question.id).first
     end
   end
 

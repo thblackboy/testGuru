@@ -44,6 +44,10 @@ class Admin::BadgesController < Admin::BaseController
     params.require(:badge).permit(:title, :image_src, :condition_type, :condition_param)
   end
 
+  def find_badge
+    @badge = Badge.find(params[:id])
+  end
+
   def rescue_with_badge_not_found
     render plain: 'Бэйдж не найден'
   end
