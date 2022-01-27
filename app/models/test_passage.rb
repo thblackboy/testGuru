@@ -5,8 +5,16 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_current_question
 
+  def time_over?
+    end_time < Time.current
+  end
+
   def accept!(answer_ids)
-    self.correct_questions += 1 if correct__answer?(answer_ids)
+    if time_over?
+      self.current_question = nil
+    elsif correct__answer?(answer_ids)
+      self.correct_questions += 1
+    end
     save!
   end
 
@@ -15,7 +23,11 @@ class TestPassage < ApplicationRecord
   end
 
   def successful?
-    success_ratio >= 85
+    if success.nil?
+      self.success = success_ratio >= 85
+      save!
+    end
+    success
   end
 
   def success_ratio
@@ -28,6 +40,14 @@ class TestPassage < ApplicationRecord
 
   def passed_questions_count
     test.questions.order(:id).where('id < ?', current_question.id).count
+  end
+
+  def end_time_to_ms
+    end_time.to_f * 1000
+  end
+
+  def end_time
+    created_at + test.time_execution.minutes
   end
 
   private
@@ -43,7 +63,7 @@ class TestPassage < ApplicationRecord
   def next_question
     if new_record?
       self.current_question = test.questions.first
-    else
+    elsif current_question.present?
       test.questions.order(:id).where('id > ?', current_question.id).first
     end
   end

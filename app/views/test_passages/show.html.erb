@@ -1,7 +1,9 @@
 <h1>Passing the <%= @test_passage.test.title%> test</h1>
 <h2><%= @test_passage.current_question_number %> / <%= @test_passage.test.questions.count%>
 <h2><%= @test_passage.current_question.body %></h2>
-<%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
+<%= form_with url: test_passage_path(@test_passage),
+              local: true,
+              method: :put do |form| %>
   <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b|%>
     <p>
       <%= b.check_box id: "answer_ids_#{b.object.id}" %>
@@ -19,5 +21,5 @@
                         questions_count: @test_passage.test.questions.count
                         } do %>
   <% end %>
-
 </div>
+<%= content_tag :h2, '', class: 'test-passage-timer', data: { end_time_to_ms: @test_passage.end_time_to_ms } %>

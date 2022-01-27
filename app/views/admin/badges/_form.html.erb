@@ -1,0 +1,26 @@
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resource: @badge %>
+  <p>
+  <%= form.label :title %>
+  <br>
+  <%= form.text_field :title %>
+  </p>
+  <p>
+  <%= form.label :image_src %>
+  <br>
+  <%= form.text_field :image_src %>
+  </p>
+  <p>
+  <%= form.label :condition_type %>
+  <br>
+  <%= form.collection_select :condition_type, Badge.conditions, :to_s, :to_s %>
+  </p>
+  <p>
+  <%= form.label :condition_param %>
+  <br>
+  <%= form.text_field :condition_param %>
+  </p>
+  <%= form.submit%>
+<%end%>
+<br>
+<%= link_to "Back to badges", admin_badges_path %>
