@@ -13,7 +13,7 @@
   <p>
   <%= form.label :condition_type %>
   <br>
-  <%= form.collection_select :condition_type, Badge.conditions, :to_s, :to_s %>
+  <%= form.collection_select :condition_type, Badge::CONDITIONS, :to_s, :to_s %>
   </p>
   <p>
   <%= form.label :condition_param %>

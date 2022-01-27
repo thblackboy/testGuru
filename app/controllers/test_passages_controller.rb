@@ -13,7 +13,7 @@ class TestPassagesController < ApplicationController
     if @test_passage.completed?
       if @test_passage.successful?
         TestsMailer.completed_test(@test_passage).deliver_now
-        BadgeGiveService.new(@test_passage).call
+        BadgeService::BadgeGiveService.new(@test_passage).call
       end
       redirect_to result_test_passage_path(@test_passage)
     else
