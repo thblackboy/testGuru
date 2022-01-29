@@ -15,7 +15,11 @@ class TestPassage < ApplicationRecord
   end
 
   def successful?
-    success_ratio >= 85
+    if success.nil?
+      self.success = success_ratio >= 85
+      save!
+    end
+    success
   end
 
   def success_ratio
@@ -43,7 +47,7 @@ class TestPassage < ApplicationRecord
   def next_question
     if new_record?
       self.current_question = test.questions.first
-    else
+    elsif current_question.present?
       test.questions.order(:id).where('id > ?', current_question.id).first
     end
   end

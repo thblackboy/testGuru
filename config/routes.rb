@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'badges/index'
   devise_for :users, path: :gurus, path_names: {sign_in: :login, sign_out: :logout}, controllers: { sessions: 'users/sessions' }
 
   resources :tests, only: :index do
@@ -7,6 +8,8 @@ Rails.application.routes.draw do
       post :start
     end
   end
+
+  resources :badges, only: :index
 
   resources :test_passages, only: %i[show update] do
     resource :gist, only: :create
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :badges, except: :show
     resources :gists, only: :index
     resources :tests do
       patch :update_inline, on: :member

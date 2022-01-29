@@ -1,0 +1,15 @@
+<tr>
+<td class="align-middle">
+  <%= badge.title %>
+</td>
+
+<td class="align-middle"><%= image_tag(badge.image_src, width: '50 px') %></td>
+<td class="align-middle"><%= badge.condition_type %></td>
+<td class="align-middle"><%= badge.condition_value %></td>
+<td class="align-middle"><%= link_to "Edit",
+                                      edit_admin_badge_path(badge) %></td>
+<td class="align-middle"><%= link_to "Delete",
+                admin_badge_path(badge),
+                method: :delete,
+                data: { confirm: 'Are you sure?'} %></td>
+</tr>

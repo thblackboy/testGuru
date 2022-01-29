@@ -1,0 +1,27 @@
+<h1> Badge List</h1>
+<p>
+<%= render 'shared/errors', resource: @badge %>
+</p>
+<p>
+  <%= link_to "New badge", new_admin_badge_path %>
+</p>
+<%if @badges.present? %>
+  <table class="table">
+    <thead>
+      <td class="sort-by-title pointer">
+      Title
+      <%= octicon 'arrow-up', class: 'text-success hide'%>
+      <%= octicon 'arrow-down', class: 'text-success hide'%>
+      </td>
+      <td>Badge Image</td>
+      <td>Condition Type</td>
+      <td>Condition Param</td>
+      <td colspan="2">Actions</td>
+    </thead>
+    <tbody>
+    <%= render @badges %>
+    </tbody>
+  </table>
+  <% else %>
+    <p>No badges</p>
+<% end %>

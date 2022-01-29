@@ -1,0 +1,16 @@
+<h1> Badge List</h1>
+<p>
+<%= render 'shared/errors', resource: @badge %>
+</p>
+<%if @badges.present? %>
+  <div>
+    <h2>All Badges </h2>  
+    <%= render @badges %>
+  </div>
+  <div>
+    <h2>My Badges </h2>  
+    <%= render @my_badges %>
+  </div>
+  <% else %>
+    <p>No badges</p>
+<% end %>

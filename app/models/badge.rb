@@ -1,8 +1,8 @@
 class Badge < ApplicationRecord
   CONDITIONS = %w[
-    FirstTimePassage
-    AllTestsByOneCategoryPassage
-    AllTestsByOneLevelPassage
+    first_time_passage
+    all_tests_by_one_category_passage
+    all_tests_by_one_level_passage
   ].freeze
 
   has_many :users_badges, dependent: :destroy
