@@ -14,6 +14,7 @@ module Testguru
     config.i18n.default_locale = :ru
 
     config.autoload_paths << "#{Rails.root}/lib/clients"
+    config.autoload_paths << "#{Rails.root}/specifications"
 
     # Configuration for the application, engines, and railties goes here.
     #
