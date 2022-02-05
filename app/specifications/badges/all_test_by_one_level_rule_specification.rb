@@ -8,6 +8,8 @@ module Badges
 
         test_ids == success_test_ids.uniq &&
           success_test_ids.group_by(&:itself).values.map(&:size).uniq.size == 1
+      else
+        false
       end
     end
   end
